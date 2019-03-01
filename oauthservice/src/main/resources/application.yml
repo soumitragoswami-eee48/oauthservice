@@ -1,0 +1,67 @@
+spring:
+    application:
+        name: oauthservice
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        url: "jdbc:mysql://localhost:3307/USERAUTH?autoreconnect=true"
+        password: "${BCSP_DBPASSWORD:root}"
+        username: "${BCSP_DBUSERNAME:root}"
+        testOnBorrow: true
+        testWhileIdle: true
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 30000
+        validationQuery: SELECT 1
+        max-active: 15
+        max-idle: 10
+        max-wait: 8000
+        passwordCharacterEncoding: UTF-8
+        useSSL: false
+               
+config:
+    oauth2:
+        clientid: trusted_client
+        clientSecret: secret
+        # For access/refresh token validity, minute values can be provided. Ex: 10min
+        accesstoken_validity : 1
+        refreshtoken_validity : 30
+        # openssl genrsa -out jwt.pem 2048
+        # openssl rsa -in jwt.pem
+        privateKey: -----BEGIN RSA PRIVATE KEY-----MIIEpAIBAAKCAQEAyRzzwtS7+UWtT7NlBDIV0ikSN2U96R+RswZMoEzz761roWBhrsvYdSbmg4lVO03WYuNKYWVcmmHqRxYeAwcuUmGfsMEu7dSClFj5JlwIXkhUO/RiHdmRQcTDyTjJy/Vgsjp8YPeQCVhcqA+n4yMmqnXDSNAmoXmrf/VCvOouCWRMHXw5cAfpsfJKR3qThwjV4wymwtL0MTbKPY1HsgXkp2YonZfZScAwhS/bjMaD70SbNzhboQhSHyxxInUWJY6hUm525/Wk358JbeiR3+EIbTKSnbed7B8WShJtu1Uq4dfAHBUFhsDb6pHSVHAhc7Abv0/H5XMFH17KwVRBeNyIJwIDAQABAoIBAQCXPAlm0tkES8xXqfzl2dAk+TO0qpKS82V6bdtDlHrAGvZcJYFvk+UTvAwOkECi1xbHyEpP0YyAn+8wQ8aP2l+QHc+beLqUqIEFk57QpNa6J8QITe9WqRydi5z7fZPqp3xuqqKLvL74+BS9YQCMQwu5ldMjtzvFpBw+ni3wqF20Ov05QJ6/AGVT/q/Ee+J6XWGjLK/f42M51z14RWe7t300ytd9jjPyAGSdXhD3C9XB8hpuQ4Y5sw5q63ENgfAQG32TE3dqn62HCDhhpUZz7Zd4jQ6DaBzoK/2BOPWrIE7T9Aq1WTEsVBQDYSPDPzXc3HLpMO0f/EcrzXes3/lQRJlJAoGBAPHZ6k9NnCH1q+t46YpDZsVJrkF7qXy7UGMl2JVIxmTLXs9FweO+AXR6+IQlgqY9T5DU1dfhpzwePaE/bd88ZLXCaGUHN+HC1xnFhsMO/0cp7TXEx9BG6XoED72T2ZRUiOysOXG0H+WDUSrfFs4QHS8HVLkBMIBSzZJy+OvBRKyDAoGBANTg7BibN9a8L76PrGlNxgAT5lxxwWOnHDSiyKN3SEtLhIzgJV1d+C6wT8ZKIAPASMi+rkS+EZq+ZbrJffvIHRDB4/3OUN/e4SyNrdF9c/OmCUXCvMgJ/Pyr9INN+AcK3/4s2BmAD6EbgXcMh4u1DZVVaoZq04BWK9DbJmg+oSyNAoGBAO87Ko41a/sfo2ayXPkagP8oSgmWRGoQc40Ps7S/nxe3H9qR2x/nJFNPDKLS4/CC90CBd+Iq4R0ToMzvDETk3Y35dwBwanOUIufoPsyV+igvregg9bHtYygB+nwBUxlpoWPTXKM/lMmX4uMwd8Nvpx6M9t5l8c8NmTGDLv0tWTv3AoGAD4RJkU2XF17mOASu84oIua65ptlf2EyxAKEw8MFcEqjxg3c/IfwcgAK3/eMfTEayx3cmqroT/GyOa7wOI9ElVThczv4/5OGRFjdJiTCUyBi9KkmUixw3RY+fJgcD4jeHtjY8ljdAbGTd3fia1LMgx1bPifa1bfBaB0JCHW0bQG0CgYBlgyy4pGNbfrt/vQ9JrUMIPAe4omWM7N7r2aWX2WezV/onSMOkkhy5ZpOQhJNbB/A9+oz4ZR1LQYBqocNPFDAGhmgimsh7/K5FSAywbLQaGEn91n1wEEiKMe0SRKb8FLe8l9etVIa93eqgHEnIttC+k2hlse7pV3UmZ7XFhtlSBw==-----END RSA PRIVATE KEY-----
+        # openssl rsa -in jwt.pem -pubout
+        publicKey: -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyRzzwtS7+UWtT7NlBDIV0ikSN2U96R+RswZMoEzz761roWBhrsvYdSbmg4lVO03WYuNKYWVcmmHqRxYeAwcuUmGfsMEu7dSClFj5JlwIXkhUO/RiHdmRQcTDyTjJy/Vgsjp8YPeQCVhcqA+n4yMmqnXDSNAmoXmrf/VCvOouCWRMHXw5cAfpsfJKR3qThwjV4wymwtL0MTbKPY1HsgXkp2YonZfZScAwhS/bjMaD70SbNzhboQhSHyxxInUWJY6hUm525/Wk358JbeiR3+EIbTKSnbed7B8WShJtu1Uq4dfAHBUFhsDb6pHSVHAhc7Abv0/H5XMFH17KwVRBeNyIJwIDAQAB-----END PUBLIC KEY-----
+        google:
+             client:
+                 clientId: 795793859323-rcbehavl2rehk4pohd8t3m0kbsqelgm0.apps.googleusercontent.com
+                 clientSecret: p6a9QRgi5f81VjDSqJQ2fK33
+                 accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+                 userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+                 tokenName: oauth_token
+                 authenticationScheme: query
+                 clientAuthenticationScheme: form
+                 scope: profile
+             resource:
+                 userInfoUri: https://www.googleapis.com/userinfo/v2/me
+                 preferTokenInfo: false
+        facebook:
+             client:
+                 clientId: 2096594743758865
+                 clientSecret: 3f1cbdf50f16152e79b1be3453b50f8c
+                 accessTokenUri: https://graph.facebook.com/oauth/access_token
+                 userAuthorizationUri: https://www.facebook.com/dialog/oauth
+                 tokenName: oauth_token
+                 authenticationScheme: query
+                 clientAuthenticationScheme: form
+             resource:
+                 userInfoUri: https://graph.facebook.com/me
+
+security:
+    oauth2:
+        resource:
+            filter-order: 3 
+            jwt:
+                key-value: -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgW2e8lLOuw3R2OathKjt4snZ+tcvEiQZksdM4ZdLxzu6xQLHN7amgETcl5bLPxBuBW6g7Tw8umwEN2WYxSou6QCKNOnAYD+u3p9ycVjMxtPMs0KmkqzhgzpVRd7NYw+9E6AuAVr8U5Fo32zYn0+yTzHU3r2KThA0jcdi4TjnSBwFQd49jk+2ZjZGEZuUX6iHDYZ2dONZasS0Ug9hvLvV09qYjIEQoNVQV/UDSQXjbgVuJazPc22jFR8EunYhls6CjuH07p0yLpx06lYSEWwLSp/mEBg8pFLJL2aJxxC0BEtAC1jQhseG81N6UE766eghTevqB6okJtKMJW2hwiw/hwIDAQAB-----END PUBLIC KEY-----
+
+server:
+    port: 8191 
+    
+     

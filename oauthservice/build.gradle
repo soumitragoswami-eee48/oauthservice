@@ -1,0 +1,26 @@
+plugins {
+	id 'org.springframework.boot' version '1.5.19.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.base'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+//mainClassName = "com.base.oauthservice.OauthserviceApplication"
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+        compile "org.springframework.security.oauth:spring-security-oauth2:2.2.1.RELEASE"
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+        compile('org.springframework.security:spring-security-jwt')
+        compile("org.springframework.boot:spring-boot-starter-jdbc")
+        compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
